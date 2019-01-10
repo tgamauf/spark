@@ -91,7 +91,8 @@ def launch_gateway(conf=None):
                 time.sleep(0.1)
 
             if not os.path.isfile(conn_info_file):
-                raise Exception("Java gateway process exited before sending its port number")
+                raise ProcessLookupError("Java gateway process exited before sending its "
+                                         "port number")
 
             with open(conn_info_file, "rb") as info:
                 gateway_port = read_int(info)
